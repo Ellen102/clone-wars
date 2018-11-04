@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>step_5</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="../javascript/ScratchLN.js" charset="utf-8"></script>
+  
+    <script>
+    window.onload = function() {
+      scratchLN.scratchify(".blocks",{media: '../static/blocks-media/'});
+    };
+    </script>
+</head>
+<body>
+<h2 id="flying-space-hippos">Flying space-hippos</h2>
+<p>Let’s add lots of flying hippos that will try to destroy your spaceship.</p>
+<ul>
+<li>Create a new sprite with the <code>Hippo1</code> image in the Scratch library. Use the <strong>shrink</strong> tool to make the <code>Hippo</code> sprite a similar size to the <code>Spaceship</code> sprite.</li>
+</ul>
+<figure>
+<img src="images/invaders-hippo.png" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure>
+<ul>
+<li>Set the <code>Hippo</code> sprite’s rotation style to be left-right only.</li>
+</ul>
+<p>[[[generic-scratch-sprite-rotation-style]]]</p>
+<ul>
+<li>Add some code to hide the <code>Hippo</code> sprite when the game starts.</li>
+</ul>
+<p>— hints — — hint — The code for this is exactly the same as the code you used to hide the <code>Lightning</code> sprite when the game starts. — /hint — — hint — Here is the code you will need:</p>
+<pre class="blocks"><code>when green flag clicked
+hide</code></pre>
+<p>— /hint — — /hints —</p>
+<ul>
+<li><p>Switch to the Stage by clicking on it in the bottom panel.</p></li>
+<li><p>Add some code to the Stage to create a new hippo every few seconds.</p></li>
+</ul>
+<p>— hints — — hint — When the green flag is clicked: Repeatedly… - Wait between 2 and 4 seconds - Create a clone of the hippo sprite</p>
+<p>— /hint — — hint — Here are the blocks you will need: <img src="images/clone-hippo-hint.png" alt="Clone hippo hint" /></p>
+<p>— /hint — — hint — Here is the code you will need:</p>
+<pre class="blocks"><code>when flag clicked
+forever
+    wait (pick random {2} to {4}) seconds
+    create clone of [Hippo1]
+end</code></pre>
+<p>— /hint — — /hints —</p>
+<ul>
+<li>Switch back to the <code>Hippo</code> sprite.</li>
+</ul>
+<p>Each new hippo should appear at a random x-position, and each should have a random speed.</p>
+<ul>
+<li>Create a new variable called <code>speed</code>{:class=“blockdata”} that is for the <code>Hippo</code> sprite only.</li>
+</ul>
+<p>[[[generic-scratch-add-variable]]]</p>
+<p>You’ll know you’ve done this correctly when you can see that the variable has the name of the sprite next to it, like this:</p>
+<figure>
+<img src="images/invaders-var-test.png" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure>
+<ul>
+<li>When each hippo clone starts, pick a random speed and starting place before showing it on the screen.</li>
+</ul>
+<pre class="blocks"><code>when I start as a clone
+set [speed] to (pick random {2} to {4})
+go to x: (pick random {-220} to {220}) y: {150}
+show</code></pre>
+<ul>
+<li><p>Test your code by clicking the green flag. Does a new hippo appear every few seconds? At the moment your hippos won’t move.</p></li>
+<li><p>The hippo should move around randomly until it gets hit by a lightning bolt. To make that happen, attach this code below the blocks you just added:</p></li>
+</ul>
+<pre class="blocks"><code>repeat until &lt;touching [lightning] ?&gt;
+    move (speed) steps
+    turn right (pick random {-10} to {10}) degrees
+    if on edge, bounce
+end
+delete this clone</code></pre>
+<ul>
+<li><p>Test out your hippo code. You should see a new hippo clone appear every few seconds, each moving at its own speed.</p>
+<figure>
+<img src="images/hippo-clones.gif" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure></li>
+<li><p>Test your laser cannon. If you hit a hippo, does it vanish?</p></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>step_6</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="../javascript/ScratchLN.js" charset="utf-8"></script>
+  
+    <script>
+    window.onload = function() {
+      scratchLN.scratchify(".blocks",{media: '../static/blocks-media/'});
+    };
+    </script>
+</head>
+<body>
+<h2 id="exploding-spaceship">Exploding spaceship</h2>
+<p>When a hippo touches your spaceship, the ship should explode!</p>
+<ul>
+<li><p>Select the <code>Spaceship</code> sprite and rename the costume to ‘normal’.</p></li>
+<li><p>Draw another costume of the spaceship exploding and call it ‘hit’.</p></li>
+</ul>
+<figure>
+<img src="images/invaders-spaceship-costumes.png" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure>
+<p>Or, if you don’t want to draw the explosion, you could choose the ‘Sun’ costume from the Scratch library, and use the <strong>Color a shape</strong> tool to change its colour and remove the face.</p>
+<figure>
+<img src="images/invaders-sun.png" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure>
+<ul>
+<li>Add some code to your <code>Spaceship</code> sprite so that it starts off displaying the spaceship costume, but when it touches a flying hippo, it switches to the ‘hit’ costume:</li>
+</ul>
+<pre class="blocks"><code>when flag clicked
+switch costume to [normal v]
+wait until &lt;touching [Hippo1 v]&gt;?
+switch costume to [hit v]</code></pre>
+<ul>
+<li>Test your code by playing the game and colliding with a hippo. Does the spaceship change to the ‘hit’ costume?</li>
+</ul>
+</body>
+</html>

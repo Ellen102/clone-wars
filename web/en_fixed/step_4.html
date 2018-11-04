@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>step_4</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="../javascript/ScratchLN.js" charset="utf-8"></script>
+  
+    <script>
+    window.onload = function() {
+      scratchLN.scratchify(".blocks",{media: '../static/blocks-media/'});
+    };
+    </script>
+</head>
+<body>
+<h2 id="lightning-bolts">Lightning bolts</h2>
+<p>Let’s give the spaceship the ability to fire lightning bolts!</p>
+<ul>
+<li><p>Add the <code>Lightning</code> sprite from the Scratch library.</p></li>
+<li><p>When the game is started, the <code>Lightning</code> sprite should be hidden until the spaceship fires its laser cannons, so add this code to the <code>Lightning</code> sprite:</p></li>
+</ul>
+<pre class="blocks"><code>when green flag clicked
+hide</code></pre>
+<p>At the moment you have a pretty gigantic lightning bolt for the spaceship to fire!</p>
+<ul>
+<li>Attach some code below the blocks you just added to make the <code>Lightning</code> sprite smaller and to turn it upside down. Then it will look like it fires pointy end–first out of the spaceship.</li>
+</ul>
+<pre class="blocks"><code>set size to {25} %
+point in direction {-90}</code></pre>
+<ul>
+<li><p>Switch to the <code>Spaceship</code> sprite by clicking on it in the Sprites panel below the Stage.</p></li>
+<li><p>Add some new code to make the <code>Spaceship</code> sprite create a new lightning bolt whenever the <strong>space</strong> key is pressed.</p></li>
+</ul>
+<p>— hints — — hint — Here is some pseudocode for you:</p>
+<p>When the green flag is clicked Keep checking forever If the <strong>space</strong> key was pressed, create a clone of the <code>Lightning</code> sprite — /hint — — hint — Here are the blocks you will need:</p>
+<p><img src="images/hint-lightning.png" alt="Hint" /> — /hint — — hint — Here is the code you will need:</p>
+<pre class="blocks"><code>when flag clicked
+forever
+    if &lt;key [space v] pressed?&gt; then
+        create clone of [Lightning]
+    end
+end</code></pre>
+<p>— /hint — — /hints —</p>
+<ul>
+<li><p>Switch back to the <code>Lightning</code> sprite.</p></li>
+<li><p>Whenever a lightning bolt is created, it should appear and then move upwards until it reaches the top of the screen. Then it should disappear.</p></li>
+</ul>
+<p>— hints — — hint —</p>
+<p>When a new <code>Lightning</code> sprite clone appears: - Display it - Repeatedly move it up by <code>10</code> until it is touching the edge of the screen - Then delete the clone — /hint — — hint — Here are the blocks you will need:</p>
+<p><img src="images/move-hint-lightning.png" alt="Move lightning" /> — /hint — — hint — Here is the code you will need to add to the <code>Lightning</code> sprite:</p>
+<pre class="blocks"><code>    when I start as a clone
+    show
+    repeat until &lt;touching [edge] ?&gt;
+        change y by {10}
+    end
+    delete this clone</code></pre>
+<p>— /hint — — /hints —</p>
+<ul>
+<li>Test your <code>Lightning</code> sprite by clicking the green flag and then pressing the <strong>space</strong> bar. When you press <strong>space</strong>, does lightning appear and move up the screen? What problem can you spot?</li>
+</ul>
+<h2 id="collapse">— collapse —</h2>
+<h2 id="title-answer">title: Answer</h2>
+<p>Oops — at the moment the lightning always fires from the same place, regardless of where the spaceship is!</p>
+<p>Add this block just before the <code>show</code>{:class=“blocklooks”} block to make the clone of the <code>Lightning</code> sprite move to the <code>Spaceship</code> sprite’s position before it appears. This will make it look like the lightning bolt is firing out of the spaceship.</p>
+<pre class="blocks"><code>go to [Spaceship]</code></pre>
+<p>— /collapse —</p>
+<ul>
+<li>Press the <strong>space</strong> key to test whether your lightning bolt now fires correctly.</li>
+</ul>
+<p>— challenge — ### Challenge: fixing the lightning What happens if you hold down the <strong>space</strong> key? Can you use a <code>wait</code>{:class=“blockcontrol”} block to fix this?</p>
+<p>— /challenge —</p>
+</body>
+</html>

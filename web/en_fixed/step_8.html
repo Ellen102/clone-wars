@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>step_8</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="../javascript/ScratchLN.js" charset="utf-8"></script>
+  
+    <script>
+    window.onload = function() {
+      scratchLN.scratchify(".blocks",{media: '../static/blocks-media/'});
+    };
+    </script>
+</head>
+<body>
+<h2 id="fruit-bat">Fruit bat</h2>
+<p>To make the game a bit harder, let’s make a fruit bat which throws oranges at the spaceship.</p>
+<ul>
+<li><p>Add a <code>Bat</code> sprite and set its rotation style to <strong>left–right</strong> only.</p></li>
+<li><p>Make the <code>Bat</code> sprite <code>move</code>{:class=“blockmotion”} from side to side across the top of the Stage <code>forever</code>{:class=“blockcontrol”}. Remember to test out your code.</p></li>
+</ul>
+<figure>
+<img src="images/invaders-bat.png" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure>
+<p>— hints — — hint — When the flag is clicked, the <code>Bat</code> sprite should forever - move 10 steps - if it reaches the edge, bounce — /hint — — hint — Here is the code you will need:</p>
+<pre class="blocks"><code>when flag clicked
+forever
+    move (10) steps
+    if on edge, bounce
+end</code></pre>
+<p>— /hint — — /hints —</p>
+<p>If you look at the bat’s costumes, you’ll see that it already has two different ones:</p>
+<figure>
+<img src="images/invaders-bat-costume.png" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure>
+<ul>
+<li>Use the <code>next costume</code>{:class=“blocklooks”} block to make the bat flap its wings as it moves.</li>
+</ul>
+<p>— hints — — hint — After the bat has moved, it should show the <code>next costume</code>{:class=“blocklooks”} and then <code>wait</code>{:class=“blockcontrol”} for a short time. — /hint — — hint — Here is the code you will need:</p>
+<pre class="blocks"><code>next costume
+wait {0.3} seconds</code></pre>
+<p>— /hint — — hint — Here is the full code with the new code added:</p>
+<pre class="blocks"><code>when flag clicked
+forever
+    move {10} steps
+    if on edge, bounce
+    next costume
+    wait {0.3} seconds
+end</code></pre>
+<p>— /hint — — /hints —</p>
+<p>Now let’s make the bat throw oranges.</p>
+<ul>
+<li>Add a new <code>Orange</code> sprite from the Scratch library.</li>
+</ul>
+<figure>
+<img src="images/invaders-orange.png" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure>
+<ul>
+<li>Add code to your bat so that, when the flag is clicked, it waits for a random time between 5 and 10 seconds and then creates a clone of the <code>Orange</code> sprite.</li>
+</ul>
+<p>— hints — — hint — Look at the code you wrote when you created the <code>Lightning</code> sprite. The code you need now is very similar, except instead of an orange appearing when you press the <strong>space</strong> bar, it should appear after you <code>wait</code>{:class=“blockcontrol”} for <code>5-10</code>{:class=“blockoperators”} seconds. — /hint — — hint — <code>When the flag is clicked</code>{:class=“blockcontrol”}, the <code>Bat</code> sprite should <code>forever</code>{:class=“blockcontrol”} - <code>wait</code>{:class=“blockcontrol”} for a <code>random</code>{:class=“blockoperators”} time between <code>5-10</code>{:class=“blockoperators”} seconds - <code>create a clone</code>{:class=“blockcontrol”} of the <code>Orange</code> sprite — /hint — — hint — Here is the code you will need:</p>
+<pre class="blocks"><code>when flag clicked
+forever
+    wait (pick random {5} to {10}) seconds
+    create clone of [Orange]
+end</code></pre>
+<p>— /hint — — /hints —</p>
+<ul>
+<li>Click on your <code>Orange</code> sprite and add some code to make each <code>Orange</code> sprite clone drop, starting from the <code>Bat</code> sprite and falling towards the bottom of the Stage.</li>
+</ul>
+<p>— hints — — hint — This code you want is almost the same as the code inside the <code>Lightning</code> sprite, except that the <code>Orange</code> sprite should <code>go to</code>{:class=“blockmotion”} the <code>Bat</code> sprite’s position, and it should use the <code>change y by</code>{:class=“blockcontrol”} block to move downwards instead of upwards. — /hint — — hint — Here is the code you will need:</p>
+<pre class="blocks"><code>    when flag clicked
+    hide
+
+    when I start as a clone
+    go to [Bat1]
+    show
+    repeat until &lt;touching [edge]?&gt;
+        change y by {-4}
+    end
+    delete this clone
+</code></pre>
+<p>— /hint — — /hints —</p>
+<ul>
+<li>Add some more code to the <code>Orange</code> sprite so that when the <code>Spaceship</code> sprite is hit, it also disappears to give the player a chance to reset:</li>
+</ul>
+<pre class="blocks"><code>    when I receive [hit]
+    delete this clone</code></pre>
+<ul>
+<li>You’ll also need to modify the code in your <code>Spaceship</code> sprite so that it is hit when it touches a <code>Hippo</code> sprite or an <code>Orange</code> sprite:</li>
+</ul>
+<pre class="blocks"><code>    wait until &lt; &lt;touching [Hippo1]?&gt; or &lt;touching [Orange]?&gt;&gt;</code></pre>
+<ul>
+<li>Test your game. What happens if you get hit by a falling orange?</li>
+</ul>
+</body>
+</html>

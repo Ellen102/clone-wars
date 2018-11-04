@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>step_7</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="../javascript/ScratchLN.js" charset="utf-8"></script>
+  
+    <script>
+    window.onload = function() {
+      scratchLN.scratchify(".blocks",{media: '../static/blocks-media/'});
+    };
+    </script>
+</head>
+<body>
+<h2 id="disappearing-hippos">Disappearing hippos</h2>
+<p>When the spaceship is hit, all the hippos should disappear to give the player a chance to recover.</p>
+<ul>
+<li>Add a block to your code to <code>broadcast</code> the message “hit” when the spaceship is touching a hippo.</li>
+</ul>
+<p>[[[generic-scratch-broadcast-message]]]</p>
+<p>— hints — — hint — Create a <code>broadcast</code> ‘hit’ block by dragging the block from the <strong>Events</strong> tab and then clicking on the drop-down menu and selecting <strong>new message</strong>. — /hint — — hint — Here is what your block should look like:</p>
+<pre class="blocks"><code>broadcast [hit]</code></pre>
+<p>— /hint — — hint — Here is what your code should look like:</p>
+<pre class="blocks"><code>when flag clicked
+switch costume to [normal]
+wait until &lt;touching [Hippo1 ] ?&gt;
+switch costume to [hit]
+broadcast [hit]</code></pre>
+<p>— /hint — — /hints —</p>
+<p>All of the <code>Hippo</code> sprite clones will hear this message, so you can now instruct them to disappear when the spaceship is hit.</p>
+<ul>
+<li>Add this code to the <code>Hippo</code> sprite:</li>
+</ul>
+<pre class="blocks"><code>when I receive [hit]
+delete this clone</code></pre>
+<ul>
+<li>Test out this code by starting a new game and deliberately colliding with a hippo.</li>
+</ul>
+<figure>
+<img src="images/invaders-hippo-collide.png" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure>
+<p>After you get hit, hippos start reappearing but the spaceship has still exploded! Let’s make it possible for the spaceship to reset itself after being hit.</p>
+<ul>
+<li>Add a <code>forever</code>{:class=“blockcontrol”} block around all of your code to make the process repeat, and a <code>wait</code>{:class=“blockcontrol”} block at the end to add a small pause before hippos begin appearing again.</li>
+</ul>
+<pre class="blocks"><code>when flag clicked
+forever
+    switch costume to [normal]
+    wait until &lt;touching [Hippo1]?&gt;
+    switch costume to [hit]
+    broadcast [hit]
+    wait {1} seconds
+end</code></pre>
+<p>— challenge — ### Challenge: lives and score</p>
+<p>At the moment, the player has infinite lives. Can you add <code>lives</code>{:class=“blockdata”}, a <code>score</code>{:class=“blockdata”}, or even a <code>highscore</code>{:class=“blockdata”} to your game?</p>
+<p>[[[generic-scratch-high-score]]] — /challenge —</p>
+</body>
+</html>

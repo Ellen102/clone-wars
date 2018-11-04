@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>step_9</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="../javascript/ScratchLN.js" charset="utf-8"></script>
+  
+    <script>
+    window.onload = function() {
+      scratchLN.scratchify(".blocks",{media: '../static/blocks-media/'});
+    };
+    </script>
+</head>
+<body>
+<h2 id="game-over">Game over</h2>
+<p>Let’s add a ‘game over’ message at the end of the game.</p>
+<ul>
+<li>If you haven’t already, create a new variable called <code>lives</code>{:class=“blockdata”}.</li>
+</ul>
+<p>Your spaceship should start with three lives and lose a life whenever it touches a hippo or an orange. Your game should also stop when you run out of lives. If you need help, you can use the <a href="https://codeclubprojects.org/en-GB/scratch/catch-the-dots/">Catch the dots</a> project to help you.</p>
+<ul>
+<li>Draw a new sprite called <code>Game Over</code> using the <strong>text</strong> tool.</li>
+</ul>
+<figure>
+<img src="images/invaders-game-over.png" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure>
+<ul>
+<li>On your Stage, broadcast a <code>game over</code>{:class=“blockevents”} message just before the game ends.</li>
+</ul>
+<pre class="blocks"><code>broadcast [game over v] and wait</code></pre>
+<ul>
+<li>Add this code to your <code>Game Over</code> sprite, so that the message shows at the end of the game:</li>
+</ul>
+<pre class="blocks"><code>when flag clicked
+hide
+
+when I receive [game over v]
+show</code></pre>
+<p>Because you’ve used a <code>broadcast [game over] and wait</code>{:class=“blockevents”} block on your stage, it will wait for the <code>Game Over</code> sprite to be displayed before ending the game.</p>
+<ul>
+<li>Test your game. How many points can you score? If it is too easy or too hard, can you think of ways to improve your game?</li>
+</ul>
+</body>
+</html>

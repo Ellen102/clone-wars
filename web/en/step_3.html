@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>step_3</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="../javascript/ScratchLN.js" charset="utf-8"></script>
+  
+    <script>
+    window.onload = function() {
+      scratchLN.scratchify(".blocks",{media: '../static/blocks-media/'});
+    };
+    </script>
+</head>
+<body>
+<h2 id="make-a-spaceship">Make a spaceship</h2>
+<p>Let’s make a spaceship that will defend the Earth!</p>
+<ul>
+<li>Start a new Scratch project, and delete the cat sprite.</li>
+</ul>
+<p>[[[generic-scratch-new-project]]]</p>
+<ul>
+<li><p>Add the <code>stars</code> backdrop and the <code>Spaceship</code> sprite to your project.</p>
+<figure>
+<img src="images/invaders-sprites.png" alt="screenshot" /><figcaption>screenshot</figcaption>
+</figure></li>
+</ul>
+<p>[[[generic-scratch-backdrop-from-library]]]</p>
+<p>[[[generic-scratch-sprite-from-library]]]</p>
+<ul>
+<li><p>Use the <strong>shrink</strong> tool to make your <code>Spaceship</code> sprite a bit smaller, and position it near the bottom of the screen.</p></li>
+<li><p>When the <strong>left</strong> arrow key is pressed, the spaceship should move to the left. Add this code to make your spaceship move left when the <strong>left</strong> arrow is pressed:</p></li>
+</ul>
+<pre class="blocks"><code>    when flag clicked
+    forever
+        if &lt;key [left arrow v] pressed?&gt; then
+            change x by (-4)
+        end
+    end</code></pre>
+<p>The x-axis goes from left to right on the Stage, so if you make the the spaceship’s x-position smaller by substracting from it, it will move further to the left. This code is the part which makes your spaceship move left:</p>
+<pre class="blocks"><code>change x by (-4)</code></pre>
+<ul>
+<li>Add some more code inside the <code>forever</code>{:class=“blockcontrol”} block to make your spaceship move to the right when the <strong>right</strong> arrow key is pressed.</li>
+</ul>
+<p>— hints — — hint — If subtracting <code>4</code> from the spaceship’s position made it move left, how could you make it move right by <code>4</code> instead? — /hint — — hint — You will need to use the same block, but with a different number:</p>
+<pre class="blocks"><code>change x by ( )</code></pre>
+<p>— /hint — — hint — Here is the code you will need to add below the other code inside your <code>forever</code>{:class=“blockcontrol”} block:</p>
+<pre class="blocks"><code>if &lt;key [right arrow v] pressed?&gt; then
+    change x by (4)
+end</code></pre>
+<p>— /hint — — /hints —</p>
+<ul>
+<li>Test your project by clicking the green flag. Can you make your spaceship move left and right with the arrow keys?</li>
+</ul>
+</body>
+</html>
